@@ -14,6 +14,8 @@ ENV SCALA_VERSION=2.11 \
 
 RUN apk update && apk add curl
 
+RUN echo "http://www-us.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz"
+
 RUN curl -fSL "http://www-us.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" -o kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz \
   && echo "${KAFKA_DOWNLOAD_SHA512}  kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" | sha512sum -c - \
   && tar xfz kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz -C /opt \
