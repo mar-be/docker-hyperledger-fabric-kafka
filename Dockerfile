@@ -16,7 +16,7 @@ RUN apk update && apk add curl
 
 
 RUN curl -fSL "https://archive.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" -o kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz \
-  && echo "${KAFKA_DOWNLOAD_SHA512}  kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" | sha512sum -c - \
+  #&& echo "${KAFKA_DOWNLOAD_SHA512}  kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" | sha512sum -c - \
   && tar xfz kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz -C /opt \
   && mv /opt/kafka_"$SCALA_VERSION"-"$KAFKA_VERSION" /opt/kafka \
   && rm kafka_"$SCALA_VERSION"-"$KAFKA_VERSION".tgz
